@@ -27,9 +27,8 @@ class _MyHomePageState extends State<MyHomePage> {
   static final List<Widget> _widgetOptions = <Widget>[
     Text('Home Page'),
     SearchPage(),
-    LibraryPage(),
-    CollectPage(),
-    SettingPage(),
+    CollectionsPage(),
+    BookmarkedPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -43,6 +42,17 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Hercules'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SettingPage()),
+              );
+            },
+          ),
+        ],
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
@@ -51,23 +61,19 @@ class _MyHomePageState extends State<MyHomePage> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: 'Dashboard',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.library_books),
-            label: 'Library',
+            icon: Icon(Icons.book),
+            label: 'Collections list',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.star),
-            label: 'Collect',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Setting',
+            icon: Icon(Icons.bookmark),
+            label: 'Bookmarked',
           ),
         ],
         currentIndex: _selectedIndex,
@@ -83,27 +89,75 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: <Widget>[
-        Align(
-          alignment: Alignment.topCenter,
-          child: Padding(
-            padding:
-                EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
-            child: Text('Searching', style: TextStyle(fontSize: 24)),
-          ),
-        ),
         Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width * 0.02),
-                child: TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Search',
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.03),
+                child: Text('Search', style: TextStyle(fontSize: 24)),
+              ),
+              SizedBox(height: 10),
+              Align(
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: MediaQuery.of(context).size.width * 0.02),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Start by typing or select tags',
+                    ),
                   ),
                 ),
+              ),
+              SizedBox(
+                  height:
+                      5), // Setting the height between the text field and the tags
+              Wrap(
+                spacing: 6, // Setting the space between the tags
+                children: <Widget>[
+                  OutlinedButton(
+                    onPressed: () {},
+                    child: Text('Mild Pain'),
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(color: Colors.black),
+                      minimumSize: Size(80, 30), // Setting the size of the tags
+                    ),
+                  ),
+                  OutlinedButton(
+                    onPressed: () {},
+                    child: Text('Burn'),
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(color: Colors.black),
+                      minimumSize: Size(80, 30), // Setting the size of the tags
+                    ),
+                  ),
+                  OutlinedButton(
+                    onPressed: () {},
+                    child: Text('Fracture'),
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(color: Colors.black),
+                      minimumSize: Size(80, 30), // Setting the size of the tags
+                    ),
+                  ),
+                  OutlinedButton(
+                    onPressed: () {},
+                    child: Text('First Aid'),
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(color: Colors.black),
+                      minimumSize: Size(80, 30), // Setting the size of the tags
+                    ),
+                  ),
+                  OutlinedButton(
+                    onPressed: () {},
+                    child: Text('...'),
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(color: Colors.black),
+                      minimumSize: Size(80, 30), // Setting the size of the tags
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -113,7 +167,7 @@ class SearchPage extends StatelessWidget {
   }
 }
 
-class LibraryPage extends StatelessWidget {
+class CollectionsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -123,20 +177,20 @@ class LibraryPage extends StatelessWidget {
           child: Padding(
             padding:
                 EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
-            child: Text('Download collections', style: TextStyle(fontSize: 24)),
           ),
         ),
         Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
+              SizedBox(height: 40),
               Padding(
                 padding: EdgeInsets.symmetric(
                     horizontal: MediaQuery.of(context).size.width * 0.02),
                 child: TextField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Search',
+                    hintText: 'Quick Search Collections',
                   ),
                 ),
               ),
@@ -184,7 +238,7 @@ class LibraryPage extends StatelessWidget {
   }
 }
 
-class CollectPage extends StatelessWidget {
+class BookmarkedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -193,7 +247,7 @@ class CollectPage extends StatelessWidget {
           alignment: Alignment.topCenter,
           child: Padding(
             padding:
-                EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
+                EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.03),
             child: Text('Collections', style: TextStyle(fontSize: 24)),
           ),
         ),
@@ -206,52 +260,63 @@ class CollectPage extends StatelessWidget {
 class SettingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Align(
-          alignment: Alignment.topCenter,
-          child: Padding(
-            padding:
-                EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
-            child: Text('Settings', style: TextStyle(fontSize: 24)),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Settings'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back), // 设置为返回图标
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
-        Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              ElevatedButton(
-                onPressed: () {
-                  // TODO: Add language selector here
-                },
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text('Add language selector here'),
-                    ],
+      ),
+      body: Stack(
+        children: <Widget>[
+          Align(
+            alignment: Alignment.center,
+            child: Padding(
+              padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.1),
+            ),
+          ),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                SizedBox(height: 40),
+                ElevatedButton(
+                  onPressed: () {
+                    // TODO: Add language selector here
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text('Add language selector here'),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  // TODO: Add text size selector here
-                },
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text('Add text size selector here'),
-                    ],
+                ElevatedButton(
+                  onPressed: () {
+                    // TODO: Add text size selector here
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text('Add text size selector here'),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
