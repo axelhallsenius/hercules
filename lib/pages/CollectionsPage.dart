@@ -1,25 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/elements/CustomElevatedButton.dart';
 
 class CollectionsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        Align(
-          alignment: Alignment.topCenter,
-          child: Padding(
-            padding:
-                EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.1),
-          ),
-        ),
-        Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              SizedBox(height: 40),
-              Padding(
+    return Scaffold(
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            SizedBox(height: 20),
+            Align(
+              alignment: Alignment.center,
+              child: Padding(
                 padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width * 0.02),
+                    horizontal: MediaQuery.of(context).size.width * 0.05),
                 child: TextField(
                   decoration: InputDecoration(
                     border: OutlineInputBorder(),
@@ -28,58 +22,35 @@ class CollectionsPage extends StatelessWidget {
                   ),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  // TODO: Add Minor Injuries Procedures here
-                },
-                child: Container(
-                  height: 70, // 设置高度
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text('Minor Injuries Procedures'),
-                      Icon(Icons.download_rounded),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  // TODO: Add Burn Injuries Procedures here
-                },
-                child: Container(
-                  height: 70, // 设置高度
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text('Burn Injuries Procedures'),
-                      Icon(Icons.download_rounded),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {
-                  // TODO: Add Major Injuries Procedures here
-                },
-                child: Container(
-                  height: 70,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text('Major Injuries Procedures'),
-                      Icon(Icons.download_rounded),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: 10),
-            ],
-          ),
+            ),
+            SizedBox(height: 20),
+            CustomElevatedButton(
+              text: 'Minor Injuries Procedures',
+              icon: Icons.download,
+              onPressed: () {},
+            ),
+            SizedBox(height: 10),
+            CustomElevatedButton(
+              text: 'Procedures 2',
+              icon: Icons.download,
+              onPressed: () {},
+            ),
+            SizedBox(height: 10),
+            CustomElevatedButton(
+              text: 'Procedures 3',
+              icon: Icons.download,
+              onPressed: () {},
+            ),
+            SizedBox(height: 10),
+            CustomElevatedButton(
+              text: '...',
+              icon: Icons.download,
+              onPressed: () {},
+            ),
+            SizedBox(height: 10),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/elements/CustomElevatedButton.dart';
 
 class BookmarkedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Container(
         child: Column(
           children: <Widget>[
@@ -14,57 +14,25 @@ class BookmarkedPage extends StatelessWidget {
               child:
                   Text('Bookmarked articles', style: TextStyle(fontSize: 24)),
             ),
-            SizedBox(height: 20),
-            ElevatedButton(
+            SizedBox(height: 45),
+            CustomElevatedButton(
+              text: 'Article 1',
               onPressed: () {},
-              child: Container(
-                height: 70,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text('Article 1'),
-                  ],
-                ),
-              ),
             ),
             SizedBox(height: 10),
-            ElevatedButton(
+            CustomElevatedButton(
+              text: 'Article 2',
               onPressed: () {},
-              child: Container(
-                height: 70,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text('Article 2'),
-                  ],
-                ),
-              ),
             ),
             SizedBox(height: 10),
-            ElevatedButton(
+            CustomElevatedButton(
+              text: 'Article 3',
               onPressed: () {},
-              child: Container(
-                height: 70,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text('Article 3'),
-                  ],
-                ),
-              ),
             ),
             SizedBox(height: 10),
-            ElevatedButton(
+            CustomElevatedButton(
+              text: '...',
               onPressed: () {},
-              child: Container(
-                height: 70,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text('...'),
-                  ],
-                ),
-              ),
             ),
             SizedBox(height: 10),
           ],

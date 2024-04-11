@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.book),
-            label: 'Collections list',
+            label: 'Collections',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.bookmark),

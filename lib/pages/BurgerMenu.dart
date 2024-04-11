@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/elements/CustomElevatedButton.dart';
 import 'ArticleHistoryPage.dart';
 import 'SettingsPage.dart';
 
@@ -28,7 +29,9 @@ class BurgerMenu extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 SizedBox(height: 40),
-                ElevatedButton(
+                CustomElevatedButton(
+                  text: 'Articles History',
+                  icon: Icons.history,
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -36,47 +39,24 @@ class BurgerMenu extends StatelessWidget {
                           builder: (context) => ArticleHistoryPage()),
                     );
                   },
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text('Article history'),
-                      ],
-                    ),
-                  ),
                 ),
-                ElevatedButton(
+                SizedBox(height: 10),
+                CustomElevatedButton(
+                  text: 'App Settings',
+                  icon: Icons.settings,
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => SettingsPage()),
                     );
                   },
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text('App settings'),
-                      ],
-                    ),
-                  ),
                 ),
-                ElevatedButton(
-                  onPressed: () {
-                    // TODO: Add text size selector here
-                  },
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text('...'),
-                      ],
-                    ),
-                  ),
+                SizedBox(height: 10),
+                CustomElevatedButton(
+                  text: '...',
+                  onPressed: () {},
                 ),
+                SizedBox(height: 10),
               ],
             ),
           ),

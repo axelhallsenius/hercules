@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/elements/CustomElevatedButton.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -13,44 +14,22 @@ class SettingsPage extends StatelessWidget {
                   top: MediaQuery.of(context).size.height * 0.03),
               child: Text('Settings', style: TextStyle(fontSize: 24)),
             ),
-            SizedBox(height: 20),
-            ElevatedButton(
+            SizedBox(height: 45),
+            CustomElevatedButton(
+              text: 'Add language selector here',
+              icon: Icons.language,
               onPressed: () {},
-              child: Container(
-                height: 70,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text('Add language selector here'),
-                  ],
-                ),
-              ),
             ),
             SizedBox(height: 10),
-            ElevatedButton(
+            CustomElevatedButton(
+              text: 'Add text size selector here',
+              icon: Icons.text_fields,
               onPressed: () {},
-              child: Container(
-                height: 70,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text('Add text size selector here'),
-                  ],
-                ),
-              ),
             ),
             SizedBox(height: 10),
-            ElevatedButton(
+            CustomElevatedButton(
+              text: 'Others...',
               onPressed: () {},
-              child: Container(
-                height: 70,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text('Others...'),
-                  ],
-                ),
-              ),
             ),
             SizedBox(height: 10),
           ],
