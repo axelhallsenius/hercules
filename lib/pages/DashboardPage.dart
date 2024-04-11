@@ -35,187 +35,60 @@ class DashboardPageState extends State<DashboardPage> {
             runSpacing: 20,
             alignment: WrapAlignment.center,
             children: <Widget>[
-              GestureDetector(
-                onLongPress: () {
+              BookmarkableButton(
+                onPressed: () {
+                  // Action to view specific page.
+                },
+                onLongPressed: () {
                   setState(() {
                     showBookmard = !showBookmard; // Show or hide the icon.
                   });
                 },
-                child: Stack(
-                  children: <Widget>[
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        SizedBox(
-                          width: 60,
-                          height: 60,
-                          child: OutlinedButton(
-                            onPressed: () {
-                              // Action to view specific page.
-                            },
-                            child: Container(),
-                            style: OutlinedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.zero,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Text('Obisteric'),
-                        if (showBookmard)
-                          Positioned(
-                            left: 0,
-                            bottom: 0,
-                            child: Icon(Icons.bookmark, size: 16),
-                          ),
-                      ],
-                    ),
-                  ],
-                ),
+                text: 'Obisterics',
               ),
-              GestureDetector(
-                onLongPress: () {
+              BookmarkableButton(
+                onPressed: () {
+                  // Action to view specific page.
+                },
+                onLongPressed: () {
                   setState(() {
                     showBookmard = !showBookmard; // Show or hide the icon.
                   });
                 },
-                child: Stack(
-                  children: <Widget>[
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        SizedBox(
-                          width: 60,
-                          height: 60,
-                          child: OutlinedButton(
-                            onPressed: () {},
-                            child: Container(),
-                            style: OutlinedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.zero,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Text('Gaming Injury'),
-                        if (showBookmard)
-                          Positioned(
-                            left: 0,
-                            bottom: 0,
-                            child: Icon(Icons.bookmark, size: 16),
-                          ),
-                      ],
-                    ),
-                  ],
-                ),
+                text: 'Gaming Injury',
               ),
-              GestureDetector(
-                onLongPress: () {
+              BookmarkableButton(
+                onPressed: () {
+                  // Action to view specific page.
+                },
+                onLongPressed: () {
                   setState(() {
                     showBookmard = !showBookmard; // Show or hide the icon.
                   });
                 },
-                child: Stack(
-                  children: <Widget>[
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        SizedBox(
-                          width: 60,
-                          height: 60,
-                          child: OutlinedButton(
-                            onPressed: () {},
-                            child: Container(),
-                            style: OutlinedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.zero,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Text('Major Owies'),
-                        if (showBookmard)
-                          Positioned(
-                            left: 0,
-                            bottom: 0,
-                            child: Icon(Icons.bookmark, size: 16),
-                          ),
-                      ],
-                    ),
-                  ],
-                ),
+                text: 'Major Owies',
               ),
-              GestureDetector(
-                onLongPress: () {
+              BookmarkableButton(
+                onPressed: () {
+                  // Action to view specific page.
+                },
+                onLongPressed: () {
                   setState(() {
                     showBookmard = !showBookmard; // Show or hide the icon.
                   });
                 },
-                child: Stack(
-                  children: <Widget>[
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        SizedBox(
-                          width: 60,
-                          height: 60,
-                          child: OutlinedButton(
-                            onPressed: () {},
-                            child: Container(),
-                            style: OutlinedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.zero,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Text('Burn Care'),
-                        if (showBookmard)
-                          Positioned(
-                            left: 0,
-                            bottom: 0,
-                            child: Icon(Icons.bookmark, size: 16),
-                          ),
-                      ],
-                    ),
-                  ],
-                ),
+                text: 'Burn Care',
               ),
-              GestureDetector(
-                onLongPress: () {
+              BookmarkableButton(
+                onPressed: () {
+                  // Action to view specific page.
+                },
+                onLongPressed: () {
                   setState(() {
                     showBookmard = !showBookmard; // Show or hide the icon.
                   });
                 },
-                child: Stack(
-                  children: <Widget>[
-                    Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        SizedBox(
-                          width: 60,
-                          height: 60,
-                          child: OutlinedButton(
-                            onPressed: () {},
-                            child: Container(),
-                            style: OutlinedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.zero,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Text('Covid'),
-                        if (showBookmard)
-                          Positioned(
-                            left: 0,
-                            bottom: 0,
-                            child: Icon(Icons.bookmark, size: 16),
-                          ),
-                      ],
-                    ),
-                  ],
-                ),
+                text: 'Covid',
               ),
             ],
           ),
@@ -251,64 +124,120 @@ class DashboardPageState extends State<DashboardPage> {
             spacing: 6, // Setting the space between the tags
             alignment: WrapAlignment.center,
             children: <Widget>[
-              OutlinedButton(
-                onPressed: () {},
-                child: Text('Handling blisters'),
-                style: OutlinedButton.styleFrom(
-                  side: BorderSide(color: Colors.black),
-                  minimumSize: Size(50, 30), // Setting the size of the tags
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.zero,
-                  ),
-                ),
+              CustomOutlinedButton(
+                onPressed: () {
+                  // Action to view specific page.
+                },
+                text: 'Handling blisters',
               ),
-              OutlinedButton(
-                onPressed: () {},
-                child: Text('Talking to Newborns'),
-                style: OutlinedButton.styleFrom(
-                  side: BorderSide(color: Colors.black),
-                  minimumSize: Size(50, 30), // Setting the size of the tags
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.zero,
-                  ),
-                ),
+              CustomOutlinedButton(
+                onPressed: () {
+                  // Action to view specific page.
+                },
+                text: 'Talking to Newborns',
               ),
-              OutlinedButton(
-                onPressed: () {},
-                child: Text('Article Name'),
-                style: OutlinedButton.styleFrom(
-                  side: BorderSide(color: Colors.black),
-                  minimumSize: Size(50, 30), // Setting the size of the tags
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.zero,
-                  ),
-                ),
+              CustomOutlinedButton(
+                onPressed: () {
+                  // Action to view specific page.
+                },
+                text: 'Article Name',
               ),
-              OutlinedButton(
-                onPressed: () {},
-                child: Text('Rheumatism'),
-                style: OutlinedButton.styleFrom(
-                  side: BorderSide(color: Colors.black),
-                  minimumSize: Size(50, 30), // Setting the size of the tags
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.zero,
-                  ),
-                ),
+              CustomOutlinedButton(
+                onPressed: () {
+                  // Action to view specific page.
+                },
+                text: 'Rheumatism',
               ),
-              OutlinedButton(
-                onPressed: () {},
-                child: Text('Small Owie'),
-                style: OutlinedButton.styleFrom(
-                  side: BorderSide(color: Colors.black),
-                  minimumSize: Size(50, 30), // Setting the size of the tags
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.zero,
-                  ),
-                ),
+              CustomOutlinedButton(
+                onPressed: () {
+                  // Action to view specific page.
+                },
+                text: 'Small Owie',
               ),
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+class BookmarkableButton extends StatefulWidget {
+  final VoidCallback onPressed;
+  final VoidCallback onLongPressed;
+  final String text;
+
+  BookmarkableButton(
+      {required this.onPressed,
+      required this.onLongPressed,
+      required this.text});
+
+  @override
+  _BookmarkableButtonState createState() => _BookmarkableButtonState();
+}
+
+class _BookmarkableButtonState extends State<BookmarkableButton> {
+  bool showBookmark = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onLongPress: () {
+        setState(() {
+          showBookmark = !showBookmark; // Show or hide the icon.
+        });
+        widget.onLongPressed();
+      },
+      child: Stack(
+        children: <Widget>[
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              SizedBox(
+                width: 60,
+                height: 60,
+                child: OutlinedButton(
+                  onPressed: widget.onPressed,
+                  child: Container(),
+                  style: OutlinedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero,
+                    ),
+                  ),
+                ),
+              ),
+              Text(widget.text),
+              if (showBookmark)
+                Positioned(
+                  left: 0,
+                  bottom: 0,
+                  child: Icon(Icons.bookmark, size: 16),
+                ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomOutlinedButton extends StatelessWidget {
+  final String text;
+  final VoidCallback onPressed;
+
+  CustomOutlinedButton({required this.text, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return OutlinedButton(
+      onPressed: onPressed,
+      child: Text(text),
+      style: OutlinedButton.styleFrom(
+        side: BorderSide(color: Colors.black),
+        minimumSize: Size(50, 30), // Setting the size of the tags
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.zero,
+        ),
       ),
     );
   }
