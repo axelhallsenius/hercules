@@ -30,19 +30,29 @@ class LanguagePageState extends State<LanguagePage> {
       appBar: AppBar(),
       body: ListView(
         children: <Widget>[
-          SizedBox(height: 45),
-          CustomElevatedButton(
-            text: 'English',
-            onPressed: () {
-              languageProvider.setLocale('en');
-            },
-          ),
-          SizedBox(height: 10),
-          CustomElevatedButton(
-            text: '中文',
-            onPressed: () {
-              languageProvider.setLocale('zh');
-            },
+          Column(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.03),
+                child: Text('Language', style: TextStyle(fontSize: 24)),
+              ),
+              SizedBox(height: 45),
+              CustomElevatedButton(
+                text: 'English',
+                onPressed: () {
+                  languageProvider.setLocale('en');
+                },
+              ),
+              SizedBox(height: 10),
+              CustomElevatedButton(
+                text: '中文',
+                onPressed: () {
+                  languageProvider.setLocale('zh');
+                },
+              ),
+              SizedBox(height: 10),
+            ],
           ),
         ],
       ),
