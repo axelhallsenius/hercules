@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/LanguagePage.dart';
-import 'package:flutter_application_1/elements/CustomElevatedButton.dart';
+import 'package:flutter_application_1/pages/language_page.dart';
+import 'package:flutter_application_1/elements/custom_elevated_button.dart';
 
 class SettingsPage extends StatelessWidget {
   @override

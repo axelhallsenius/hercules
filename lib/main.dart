@@ -2,11 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'pages/DashboardPage.dart';
-import 'pages/CollectionsPage.dart';
-import 'pages/BookmarkedPage.dart';
-import 'pages/BurgerMenu.dart';
-import 'pages/LanguagePage.dart';
+import 'pages/dashboard_page.dart';
+import 'pages/collections_page.dart';
+import 'pages/bookmarked_page.dart';
+import 'pages/burger_menu.dart';
+import 'pages/language_page.dart';
 
 // The main function of the app, which is the entry point.
 void main() {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/elements/CustomElevatedButton.dart';
-import 'package:flutter_application_1/elements/SearchBox.dart';
+import 'package:flutter_application_1/elements/custom_elevated_button.dart';
+import 'package:flutter_application_1/elements/search_box.dart';
 
 class CollectionsPage extends StatelessWidget {
   @override

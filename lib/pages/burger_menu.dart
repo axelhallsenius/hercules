@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_application_1/elements/CustomElevatedButton.dart';
-import 'ArticleHistoryPage.dart';
-import 'SettingsPage.dart';
+import 'package:flutter_application_1/elements/custom_elevated_button.dart';
+import 'article_history_page.dart';
+import 'Settings_page.dart';
 
 class BurgerMenu extends StatelessWidget {
   @override

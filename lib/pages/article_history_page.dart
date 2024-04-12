@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/elements/CustomElevatedButton.dart';
+import 'package:flutter_application_1/elements/custom_elevated_button.dart';
 
 class ArticleHistoryPage extends StatelessWidget {
   @override

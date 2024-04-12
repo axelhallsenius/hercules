@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_application_1/elements/CustomElevatedButton.dart';
-import 'package:intl/intl.dart';
+import 'package:flutter_application_1/elements/custom_elevated_button.dart';
 
 class LanguageProvider extends ChangeNotifier {
   Locale _locale = Locale('en');
@@ -20,10 +18,10 @@ class LanguageProvider extends ChangeNotifier {
 
 class LanguagePage extends StatefulWidget {
   @override
-  _LanguagePageState createState() => _LanguagePageState();
+  LanguagePageState createState() => LanguagePageState();
 }
 
-class _LanguagePageState extends State<LanguagePage> {
+class LanguagePageState extends State<LanguagePage> {
   @override
   Widget build(BuildContext context) {
     // Access the provider

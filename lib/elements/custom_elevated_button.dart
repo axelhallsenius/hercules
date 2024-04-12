@@ -12,7 +12,7 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
-      child: Container(
+      child: SizedBox(
         height: 70,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

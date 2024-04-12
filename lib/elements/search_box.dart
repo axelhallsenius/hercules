@@ -12,11 +12,11 @@ class SearchBoxWithHistory extends StatefulWidget {
   });
 
   @override
-  _SearchBoxWithHistoryState createState() => _SearchBoxWithHistoryState();
+  SearchBoxWithHistoryState createState() => SearchBoxWithHistoryState();
 }
 
 // This class is used to create the state of the search box with history.
-class _SearchBoxWithHistoryState extends State<SearchBoxWithHistory> {
+class SearchBoxWithHistoryState extends State<SearchBoxWithHistory> {
   final _textFieldKey = GlobalKey();
   final LayerLink _layerLink = LayerLink();
   OverlayEntry? _overlayEntry;
@@ -42,7 +42,7 @@ class _SearchBoxWithHistoryState extends State<SearchBoxWithHistory> {
   void _focusListener() {
     if (_focusNode.hasFocus) {
       _overlayEntry = _createOverlayEntry();
-      Overlay.of(context)?.insert(_overlayEntry!);
+      Overlay.of(context).insert(_overlayEntry!);
     } else {
       _overlayEntry?.remove();
       _overlayEntry = null;
@@ -82,7 +82,7 @@ class _SearchBoxWithHistoryState extends State<SearchBoxWithHistory> {
                           _overlayEntry?.remove();
                           if (_focusNode.hasFocus) {
                             _overlayEntry = _createOverlayEntry();
-                            Overlay.of(context)?.insert(_overlayEntry!);
+                            Overlay.of(context).insert(_overlayEntry!);
                           } else {
                             _overlayEntry = null;
                           }

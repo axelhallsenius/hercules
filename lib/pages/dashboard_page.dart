@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/elements/SearchBox.dart';
+import 'package:flutter_application_1/elements/search_box.dart';
 
 class DashboardPage extends StatefulWidget {
   @override
@@ -89,7 +89,7 @@ class DashboardPageState extends State<DashboardPage> {
           SizedBox(height: 30),
           // Button for more categories.
           Center(
-            child: Container(
+            child: SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
@@ -167,10 +167,10 @@ class SymptomaticButton extends StatefulWidget {
       required this.text});
 
   @override
-  _SymptomaticButtonState createState() => _SymptomaticButtonState();
+  SymptomaticButtonState createState() => SymptomaticButtonState();
 }
 
-class _SymptomaticButtonState extends State<SymptomaticButton> {
+class SymptomaticButtonState extends State<SymptomaticButton> {
   bool showBookmark = false;
 
   @override
@@ -194,12 +194,12 @@ class _SymptomaticButtonState extends State<SymptomaticButton> {
                 height: 60,
                 child: OutlinedButton(
                   onPressed: widget.onPressed,
-                  child: Container(),
                   style: OutlinedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero,
                     ),
                   ),
+                  child: Container(),
                 ),
               ),
               if (showBookmark)
@@ -231,10 +231,10 @@ class HistoryButton extends StatefulWidget {
   });
 
   @override
-  _HistoryButtonState createState() => _HistoryButtonState();
+  HistoryButtonState createState() => HistoryButtonState();
 }
 
-class _HistoryButtonState extends State<HistoryButton> {
+class HistoryButtonState extends State<HistoryButton> {
   bool showBookmark =
       false; // State variable to control the visibility of the icon
 
@@ -251,7 +251,6 @@ class _HistoryButtonState extends State<HistoryButton> {
         children: <Widget>[
           OutlinedButton(
             onPressed: widget.onPressed,
-            child: Text(widget.text),
             style: OutlinedButton.styleFrom(
               side: BorderSide(color: Colors.black),
               minimumSize: Size(50, 30),
@@ -259,6 +258,7 @@ class _HistoryButtonState extends State<HistoryButton> {
                 borderRadius: BorderRadius.circular(8),
               ),
             ),
+            child: Text(widget.text),
           ),
           if (showBookmark)
             Positioned(
