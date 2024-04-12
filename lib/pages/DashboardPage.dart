@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/elements/SearchBox.dart';
 
 class DashboardPage extends StatefulWidget {
   @override
@@ -6,30 +7,23 @@ class DashboardPage extends StatefulWidget {
 }
 
 class DashboardPageState extends State<DashboardPage> {
-  bool showBookmard = false;
+  bool bookmark = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Padding(
+          padding: EdgeInsets.only(top: 5),
+          child: SearchBoxWithHistory(
+            hintText: 'Start by Typing',
+            searchKey: 'dashboard',
+          ),
+        ),
+      ),
       body: ListView(
         children: <Widget>[
-          // Category section with horizontal scrolling.
-          SizedBox(height: 20),
-          Align(
-            alignment: Alignment.center,
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.05),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Start by typing or select tags',
-                  prefixIcon: Icon(Icons.search),
-                ),
-              ),
-            ),
-          ),
-          SizedBox(height: 20),
+          SizedBox(height: 40),
           Wrap(
             spacing: 40, // Setting the space between the tags
             runSpacing: 20,
@@ -41,7 +35,7 @@ class DashboardPageState extends State<DashboardPage> {
                 },
                 onLongPressed: () {
                   setState(() {
-                    showBookmard = !showBookmard; // Show or hide the icon.
+                    bookmark = !bookmark; // Show or hide the icon.
                   });
                 },
                 text: 'Obisterics',
@@ -52,7 +46,7 @@ class DashboardPageState extends State<DashboardPage> {
                 },
                 onLongPressed: () {
                   setState(() {
-                    showBookmard = !showBookmard; // Show or hide the icon.
+                    bookmark = !bookmark; // Show or hide the icon.
                   });
                 },
                 text: 'Gaming Injury',
@@ -63,7 +57,7 @@ class DashboardPageState extends State<DashboardPage> {
                 },
                 onLongPressed: () {
                   setState(() {
-                    showBookmard = !showBookmard; // Show or hide the icon.
+                    bookmark = !bookmark; // Show or hide the icon.
                   });
                 },
                 text: 'Major Owies',
@@ -74,7 +68,7 @@ class DashboardPageState extends State<DashboardPage> {
                 },
                 onLongPressed: () {
                   setState(() {
-                    showBookmard = !showBookmard; // Show or hide the icon.
+                    bookmark = !bookmark; // Show or hide the icon.
                   });
                 },
                 text: 'Burn Care',
@@ -85,7 +79,7 @@ class DashboardPageState extends State<DashboardPage> {
                 },
                 onLongPressed: () {
                   setState(() {
-                    showBookmard = !showBookmard; // Show or hide the icon.
+                    bookmark = !bookmark; // Show or hide the icon.
                   });
                 },
                 text: 'Covid',
