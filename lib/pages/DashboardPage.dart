@@ -29,7 +29,7 @@ class DashboardPageState extends State<DashboardPage> {
             runSpacing: 20,
             alignment: WrapAlignment.center,
             children: <Widget>[
-              BookmarkableButton(
+              SymptomaticButton(
                 onPressed: () {
                   // Action to view specific page.
                 },
@@ -40,7 +40,7 @@ class DashboardPageState extends State<DashboardPage> {
                 },
                 text: 'Obisterics',
               ),
-              BookmarkableButton(
+              SymptomaticButton(
                 onPressed: () {
                   // Action to view specific page.
                 },
@@ -51,7 +51,7 @@ class DashboardPageState extends State<DashboardPage> {
                 },
                 text: 'Gaming Injury',
               ),
-              BookmarkableButton(
+              SymptomaticButton(
                 onPressed: () {
                   // Action to view specific page.
                 },
@@ -62,7 +62,7 @@ class DashboardPageState extends State<DashboardPage> {
                 },
                 text: 'Major Owies',
               ),
-              BookmarkableButton(
+              SymptomaticButton(
                 onPressed: () {
                   // Action to view specific page.
                 },
@@ -73,7 +73,7 @@ class DashboardPageState extends State<DashboardPage> {
                 },
                 text: 'Burn Care',
               ),
-              BookmarkableButton(
+              SymptomaticButton(
                 onPressed: () {
                   // Action to view specific page.
                 },
@@ -118,31 +118,31 @@ class DashboardPageState extends State<DashboardPage> {
             spacing: 6, // Setting the space between the tags
             alignment: WrapAlignment.center,
             children: <Widget>[
-              CustomOutlinedButton(
+              HistoryButton(
                 onPressed: () {
                   // Action to view specific page.
                 },
                 text: 'Handling blisters',
               ),
-              CustomOutlinedButton(
+              HistoryButton(
                 onPressed: () {
                   // Action to view specific page.
                 },
                 text: 'Talking to Newborns',
               ),
-              CustomOutlinedButton(
+              HistoryButton(
                 onPressed: () {
                   // Action to view specific page.
                 },
                 text: 'Article Name',
               ),
-              CustomOutlinedButton(
+              HistoryButton(
                 onPressed: () {
                   // Action to view specific page.
                 },
                 text: 'Rheumatism',
               ),
-              CustomOutlinedButton(
+              HistoryButton(
                 onPressed: () {
                   // Action to view specific page.
                 },
@@ -156,36 +156,38 @@ class DashboardPageState extends State<DashboardPage> {
   }
 }
 
-class BookmarkableButton extends StatefulWidget {
+class SymptomaticButton extends StatefulWidget {
   final VoidCallback onPressed;
   final VoidCallback onLongPressed;
   final String text;
 
-  BookmarkableButton(
+  SymptomaticButton(
       {required this.onPressed,
       required this.onLongPressed,
       required this.text});
 
   @override
-  _BookmarkableButtonState createState() => _BookmarkableButtonState();
+  _SymptomaticButtonState createState() => _SymptomaticButtonState();
 }
 
-class _BookmarkableButtonState extends State<BookmarkableButton> {
+class _SymptomaticButtonState extends State<SymptomaticButton> {
   bool showBookmark = false;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onLongPress: () {
-        setState(() {
-          showBookmark = !showBookmark; // Show or hide the icon.
-        });
-        widget.onLongPressed();
-      },
-      child: Stack(
-        children: <Widget>[
-          Column(
-            mainAxisSize: MainAxisSize.min,
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        GestureDetector(
+          onLongPress: () {
+            setState(() {
+              showBookmark =
+                  !showBookmark; // Toggle the display of the bookmark icon.
+            });
+            widget.onLongPressed();
+          },
+          child: Stack(
+            alignment: Alignment.center, // Center the icon within the button
             children: <Widget>[
               SizedBox(
                 width: 60,
@@ -200,38 +202,71 @@ class _BookmarkableButtonState extends State<BookmarkableButton> {
                   ),
                 ),
               ),
-              Text(widget.text),
               if (showBookmark)
                 Positioned(
-                  left: 0,
-                  bottom: 0,
-                  child: Icon(Icons.bookmark, size: 16),
+                  left: 4, // Adjust to move icon to the left
+                  bottom: 4, // Adjust to move icon to the bottom
+                  child: Icon(Icons.bookmark, size: 16), // Smaller icon size
                 ),
             ],
           ),
-        ],
-      ),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(
+              top: 8), // Add some spacing between the button and the text
+          child: Text(widget.text), // Text is now outside and below the button
+        ),
+      ],
     );
   }
 }
 
-class CustomOutlinedButton extends StatelessWidget {
+class HistoryButton extends StatefulWidget {
   final String text;
   final VoidCallback onPressed;
 
-  CustomOutlinedButton({required this.text, required this.onPressed});
+  HistoryButton({
+    required this.text,
+    required this.onPressed,
+  });
+
+  @override
+  _HistoryButtonState createState() => _HistoryButtonState();
+}
+
+class _HistoryButtonState extends State<HistoryButton> {
+  bool showBookmark =
+      false; // State variable to control the visibility of the icon
 
   @override
   Widget build(BuildContext context) {
-    return OutlinedButton(
-      onPressed: onPressed,
-      child: Text(text),
-      style: OutlinedButton.styleFrom(
-        side: BorderSide(color: Colors.black),
-        minimumSize: Size(50, 30), // Setting the size of the tags
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.zero,
-        ),
+    return GestureDetector(
+      onLongPress: () {
+        setState(() {
+          showBookmark = !showBookmark; // Toggle the display of the icon
+        });
+      },
+      child: Stack(
+        alignment: Alignment.center,
+        children: <Widget>[
+          OutlinedButton(
+            onPressed: widget.onPressed,
+            child: Text(widget.text),
+            style: OutlinedButton.styleFrom(
+              side: BorderSide(color: Colors.black),
+              minimumSize: Size(50, 30),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+          ),
+          if (showBookmark)
+            Positioned(
+              left: 4,
+              bottom: 4,
+              child: Icon(Icons.bookmark, size: 16),
+            ),
+        ],
       ),
     );
   }

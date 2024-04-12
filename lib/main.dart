@@ -1,21 +1,40 @@
 // Importing material design library from Flutter.
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'pages/DashboardPage.dart';
 import 'pages/CollectionsPage.dart';
 import 'pages/BookmarkedPage.dart';
 import 'pages/BurgerMenu.dart';
+import 'pages/LanguagePage.dart';
 
 // The main function of the app, which is the entry point.
 void main() {
-  runApp(MyApp()); // Running the app with MyApp as the root widget.
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => LanguageProvider(),
+      child: MyApp(),
+    ),
+  ); // Running the app with MyApp as the root widget.
 }
 
 // MyApp class that creates the app structure.
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<LanguageProvider>(context);
     // MaterialApp widget is used as the root of your app.
     return MaterialApp(
+      locale: provider.locale,
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en', ''), // English
+        const Locale('zh', ''), // Chinese
+      ],
       title: 'Hercules App', // Title of the app.
       theme: ThemeData(
         primarySwatch: Colors.blue, // Theme color of the app.

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/LanguagePage.dart';
 import 'package:flutter_application_1/elements/CustomElevatedButton.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -19,7 +20,12 @@ class SettingsPage extends StatelessWidget {
               CustomElevatedButton(
                 text: 'Add language selector here',
                 icon: Icons.language,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LanguagePage()),
+                  );
+                },
               ),
               SizedBox(height: 10),
               CustomElevatedButton(
