@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'pages/dashboard_page.dart';
 import 'pages/collections_page.dart';
 import 'pages/bookmarked_page.dart';
@@ -25,8 +26,10 @@ class MyApp extends StatelessWidget {
     final provider = Provider.of<LanguageProvider>(context);
     // MaterialApp widget is used as the root of your app.
     return MaterialApp(
-      locale: provider.locale,
+      //set to swedish
+      locale: Locale('sv'),
       localizationsDelegates: [
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
@@ -34,6 +37,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: [
         const Locale('en', ''), // English
         const Locale('zh', ''), // Chinese
+        const Locale('sv'), // Swedish
       ],
       title: 'Hercules App', // Title of the app.
       theme: ThemeData(

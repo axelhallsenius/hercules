@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/elements/search_box.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DashboardPage extends StatefulWidget {
   @override
@@ -38,7 +39,7 @@ class DashboardPageState extends State<DashboardPage> {
                     bookmark = !bookmark; // Show or hide the icon.
                   });
                 },
-                text: 'Obisterics',
+                text: (AppLocalizations.of(context)!.obisterics),
               ),
               SymptomaticButton(
                 onPressed: () {
@@ -49,7 +50,7 @@ class DashboardPageState extends State<DashboardPage> {
                     bookmark = !bookmark; // Show or hide the icon.
                   });
                 },
-                text: 'Gaming Injury',
+                text: (AppLocalizations.of(context)!.gaminginjury),
               ),
               SymptomaticButton(
                 onPressed: () {
@@ -60,7 +61,7 @@ class DashboardPageState extends State<DashboardPage> {
                     bookmark = !bookmark; // Show or hide the icon.
                   });
                 },
-                text: 'Major Owies',
+                text: (AppLocalizations.of(context)!.majorowies),
               ),
               SymptomaticButton(
                 onPressed: () {
@@ -71,7 +72,7 @@ class DashboardPageState extends State<DashboardPage> {
                     bookmark = !bookmark; // Show or hide the icon.
                   });
                 },
-                text: 'Burn Care',
+                text: (AppLocalizations.of(context)!.burninjury),
               ),
               SymptomaticButton(
                 onPressed: () {
@@ -82,7 +83,7 @@ class DashboardPageState extends State<DashboardPage> {
                     bookmark = !bookmark; // Show or hide the icon.
                   });
                 },
-                text: 'Covid',
+                text: (AppLocalizations.of(context)!.covid),
               ),
             ],
           ),

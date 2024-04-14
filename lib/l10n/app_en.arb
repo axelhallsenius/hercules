@@ -1,0 +1,31 @@
+{
+  "helloWorld": "Hello World!",
+  "@helloWorld": {
+    "description": "The conventional newborn programmer greeting"
+  },
+
+  "obisterics": "Obisterics",
+  "@obisterics": {
+    "description": "Obstetrics is the field of study concentrated on pregnancy, childbirth and the postpartum period"
+  },
+
+  "gaminginjury": "Gaming Injury",
+  "@gaminginjury": {
+    "description": "Gaming related injuries are injuries that are caused by playing video games"
+  },
+
+  "majorowies": "Major Owies",
+  "@majorowies": {
+    "description": "Major owies are injuries that are severe and require immediate medical attention"
+  },
+
+  "burninjury": "Burn Injury",
+  "@burninjury": {
+    "description": "A burn is a type of injury to skin, or other tissues, caused by heat, cold, electricity, chemicals, friction, or radiation"
+  },
+
+  "covid": "Covid",
+  "@covid": {
+    "description": "COVID-19 is a respiratory illness caused by a coronavirus"
+  }
+}
