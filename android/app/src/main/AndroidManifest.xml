@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="Happy nurse"
+        android:label="Healthcare in your Hand"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
