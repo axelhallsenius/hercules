@@ -8,6 +8,7 @@ import 'pages/bookmarked_page.dart';
 import 'pages/burger_menu.dart';
 import 'pages/language_page.dart';
 
+
 // The main function of the app, which is the entry point.
 void main() {
   runApp(
@@ -75,7 +76,19 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Happy Nurse'), // AppBar title.
+        title: Row(
+          children: <Widget>[
+            Image.asset(
+              'lib/images/logo.png', // Replace with your asset path
+              fit: BoxFit.contain,
+              height: 35,
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('Happy Nurse'),
+            )
+          ],
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.menu),
