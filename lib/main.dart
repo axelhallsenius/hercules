@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Row(
           children: <Widget>[
             Image.asset(
-              'lib/images/logo.png', // Replace with your asset path
+              'assets/images/logo.png', // Replace with your asset path
               fit: BoxFit.contain,
               height: 35,
             ),
