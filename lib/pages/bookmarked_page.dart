@@ -7,52 +7,76 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:typed_data';
+import 'package:shared_preferences/shared_preferences.dart';
 
+//class BookmarkedPage extends StatelessWidget {
+  //final Future<List<String>> bookmarks;
+
+  //BookmarkedPage() : bookmarks = _fetchBookmarks();
+
+  //static Future<Database> openDatabaseFromAssets() async {
+    //// Search for the database file in the application documents directory
+    //Directory documentsDirectory = await getApplicationDocumentsDirectory();
+    //String path = join(documentsDirectory.path, "hercules.db");
+
+    //// Check if the database exists
+    //bool dbExists = await File(path).exists();
+    //print("Database exists: $dbExists at $path");
+
+    //// If the database does not exist, load it from the Flutter assets
+    //if (!dbExists) {
+      //// Load the database file as a byte data
+      //ByteData data = await rootBundle.load("assets/db/hercules.db");
+      //List<int> bytes =
+          //data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+
+      //// Write the database file to the application documents directory
+      //await File(path).writeAsBytes(bytes, flush: true);
+    //}
+
+    //// Open the database and return it
+    //return await openDatabase(path);
+  //}
+
+  //static Future<List<String>> _fetchBookmarks() async {
+  //  try {
+  //    var db = await openDatabaseFromAssets();
+  //    List<Map> result =
+  //        await db.rawQuery('SELECT * FROM ARTICLES WHERE bookmark > 0');
+
+  //    //fetch these articles
+  //    print(result);
+  //    if (result.isEmpty) {
+  //      return [];
+  //    }
+
+  //    return result.map((row) => row['name'].toString()).toList();
+  //  } catch (e) {
+  //    print('Error fetching collections: $e');
+  //    return [];
+  //  }
+  //}
 class BookmarkedPage extends StatelessWidget {
-  final Future<List<String>> bookmarks;
+  //TODO: Its late and I couldn't figure out a better way to do this atm
+  //Could we do a first startup thing, or just detect if there is no cache or something?
+  static Future<void> setBookmarks() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList('bookmarks', <String>["Self inflicted headaches", "Snail Surgery"]);
+  } 
 
+  final Future<List<String>> bookmarks;
   BookmarkedPage() : bookmarks = _fetchBookmarks();
 
-  static Future<Database> openDatabaseFromAssets() async {
-    // Search for the database file in the application documents directory
-    Directory documentsDirectory = await getApplicationDocumentsDirectory();
-    String path = join(documentsDirectory.path, "hercules.db");
-
-    // Check if the database exists
-    bool dbExists = await File(path).exists();
-    print("Database exists: $dbExists at $path");
-
-    // If the database does not exist, load it from the Flutter assets
-    if (!dbExists) {
-      // Load the database file as a byte data
-      ByteData data = await rootBundle.load("assets/db/hercules.db");
-      List<int> bytes =
-          data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
-
-      // Write the database file to the application documents directory
-      await File(path).writeAsBytes(bytes, flush: true);
-    }
-
-    // Open the database and return it
-    return await openDatabase(path);
-  }
-
   static Future<List<String>> _fetchBookmarks() async {
+    setBookmarks();
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
     try {
-      var db = await openDatabaseFromAssets();
-      List<Map> result =
-          await db.rawQuery('SELECT * FROM ARTICLES WHERE bookmark > 0');
-
-      //fetch these articles
-      print(result);
-      if (result.isEmpty) {
-        return [];
-      }
-
-      return result.map((row) => row['name'].toString()).toList();
-    } catch (e) {
-      print('Error fetching collections: $e');
-      return [];
+      //get array from app cache
+      return Future.value(prefs.getStringList('bookmarks'));
+    }
+    catch(e) {
+      print('Error fetching bookmarks: $e');
+      return[];
     }
   }
 
