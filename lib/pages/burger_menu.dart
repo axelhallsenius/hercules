@@ -51,7 +51,8 @@ class BurgerMenu extends StatelessWidget {
               ),
               SizedBox(height: 10),
               CustomElevatedButton(
-                text: '...',
+                text: 'Clear Cache',
+                icon: Icons.delete,
                 onPressed: () {},
               ),
               SizedBox(height: 10),

@@ -8,7 +8,6 @@ import 'package:path/path.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:typed_data';
 
-
 class BookmarkedPage extends StatelessWidget {
   final Future<List<String>> bookmarks;
 
@@ -28,7 +27,7 @@ class BookmarkedPage extends StatelessWidget {
       // Load the database file as a byte data
       ByteData data = await rootBundle.load("assets/db/hercules.db");
       List<int> bytes =
-      data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+          data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
 
       // Write the database file to the application documents directory
       await File(path).writeAsBytes(bytes, flush: true);
@@ -41,11 +40,11 @@ class BookmarkedPage extends StatelessWidget {
   static Future<List<String>> _fetchBookmarks() async {
     try {
       var db = await openDatabaseFromAssets();
-      List<Map> result = await db.query('SELECT * FROM ARTICLES WHERE bookmark > 1');
+      List<Map> result =
+          await db.rawQuery('SELECT * FROM ARTICLES WHERE bookmark > 0');
 
       //fetch these articles
-
-
+      print(result);
       if (result.isEmpty) {
         return [];
       }
