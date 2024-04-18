@@ -7,6 +7,7 @@ import 'pages/collections_page.dart';
 import 'pages/bookmarked_page.dart';
 import 'pages/burger_menu.dart';
 import 'pages/language_page.dart';
+import 'pages/collection_article_page.dart';
 
 // The main function of the app, which is the entry point.
 void main() {

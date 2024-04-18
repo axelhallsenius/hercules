@@ -5,15 +5,16 @@ import 'package:flutter_application_1/elements/search_box.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import 'collection_article_page.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:typed_data';
 
 class CollectionsPage extends StatefulWidget {
   @override
-  _CollectionsPageState createState() => _CollectionsPageState();
+  CollectionsPageState createState() => CollectionsPageState();
 }
 
-class _CollectionsPageState extends State<CollectionsPage> {
+class CollectionsPageState extends State<CollectionsPage> {
   late Future<List<String>> collections;
   List<String> filteredCollections = [];
   String searchQuery = '';
@@ -109,7 +110,16 @@ class _CollectionsPageState extends State<CollectionsPage> {
                                 children: [
                                   CustomElevatedButton(
                                     text: name,
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              CollectionArticlePage(
+                                                  collectionName: name),
+                                        ),
+                                      );
+                                    },
                                   ),
                                   SizedBox(height: 10),
                                 ],
