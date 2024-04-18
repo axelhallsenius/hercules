@@ -132,7 +132,7 @@ class CollectionArticlePageState extends State<CollectionArticlePage> {
                                           text: name,
                                           onPressed: () {},
                                         ),
-                                        SizedBox(height: 10),
+                                        SizedBox(height: 15),
                                       ],
                                     ))
                                 .toList() ??

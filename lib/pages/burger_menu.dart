@@ -38,7 +38,7 @@ class BurgerMenu extends StatelessWidget {
                   );
                 },
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 15),
               CustomElevatedButton(
                 text: 'App Settings',
                 icon: Icons.settings,
@@ -49,12 +49,12 @@ class BurgerMenu extends StatelessWidget {
                   );
                 },
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 15),
               CustomElevatedButton(
                 text: '...',
                 onPressed: () {},
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 15),
             ],
           ),
         ],
