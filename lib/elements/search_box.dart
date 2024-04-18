@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 class SearchBoxWithHistory extends StatefulWidget {
   final String hintText;
   final String searchKey;
+  final Function(String)? onSearch;
 
   // Constructor to initialize the search box with history.
   SearchBoxWithHistory({
-    this.hintText = 'Start typing',
+    required this.hintText,
     required this.searchKey,
+    this.onSearch,
   });
 
   @override
@@ -36,6 +38,9 @@ class SearchBoxWithHistoryState extends State<SearchBoxWithHistory> {
   void initState() {
     super.initState();
     _focusNode.addListener(_focusListener);
+    _controller.addListener(() {
+      widget.onSearch?.call(_controller.text);
+    });
   }
 
   // This method is used to listen to the focus of the search box.

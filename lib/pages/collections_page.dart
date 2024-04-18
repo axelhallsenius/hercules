@@ -8,10 +8,24 @@ import 'package:path/path.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:typed_data';
 
-class CollectionsPage extends StatelessWidget {
-  final Future<List<String>> collections;
+class CollectionsPage extends StatefulWidget {
+  @override
+  _CollectionsPageState createState() => _CollectionsPageState();
+}
 
-  CollectionsPage() : collections = _fetchCollections();
+class _CollectionsPageState extends State<CollectionsPage> {
+  late Future<List<String>> collections;
+  List<String> filteredCollections = [];
+  String searchQuery = '';
+
+  @override
+  void initState() {
+    super.initState();
+    collections = _fetchCollections().then((list) {
+      filteredCollections = List.from(list);
+      return list;
+    });
+  }
 
   static Future<Database> openDatabaseFromAssets() async {
     // Search for the database file in the application documents directory
@@ -53,53 +67,62 @@ class CollectionsPage extends StatelessWidget {
     }
   }
 
+  void _updateSearchQuery(String newQuery) {
+    setState(() {
+      searchQuery = newQuery;
+      collections.then((list) {
+        // Filter the collections based on the search query
+        filteredCollections = list
+            .where(
+                (item) => item.toLowerCase().contains(newQuery.toLowerCase()))
+            .toList();
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Padding(
-          padding: EdgeInsets.only(top: 5),
-          child: SearchBoxWithHistory(
-              hintText: 'Quick Search Collections', searchKey: 'collections'),
+          title: Padding(
+        padding: EdgeInsets.only(top: 5),
+        child: SearchBoxWithHistory(
+          hintText: 'Quick Search Collections',
+          searchKey: 'collections',
+          onSearch: _updateSearchQuery,
         ),
-      ),
-      body: Column(
-        children: [
-          SizedBox(height: 45), // Add a SizedBox between AppBar and body
-          Expanded(
-            child: FutureBuilder<List<String>>(
-              future: collections,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  if (snapshot.hasError) {
-                    // If an error occurred while fetching the data
-                    return Text('Error: ${snapshot.error}');
-                  } else if (snapshot.data != null &&
-                      snapshot.data!.isNotEmpty) {
-                    // If the data was fetched successfully
-                    return ListView(
-                      children: snapshot.data!
+      )),
+      body: Padding(
+        padding:
+            EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.03),
+        child: FutureBuilder<List<String>>(
+          future: collections,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              if (snapshot.hasError) {
+                return Text('Error: ${snapshot.error}');
+              } else {
+                return ListView(
+                  children: snapshot.data
+                          ?.where((name) => name.contains(searchQuery))
                           .map((name) => Column(
                                 children: [
                                   CustomElevatedButton(
                                     text: name,
                                     onPressed: () {},
                                   ),
-                                  SizedBox(
-                                      height:
-                                          10), // Add a SizedBox after each button
+                                  SizedBox(height: 10),
                                 ],
                               ))
-                          .toList(),
-                    );
-                  }
-                }
-                // If none of the above conditions are met, return a CircularProgressIndicator
-                return CircularProgressIndicator();
-              },
-            ),
-          ),
-        ],
+                          .toList() ??
+                      [],
+                );
+              }
+            } else {
+              return CircularProgressIndicator();
+            }
+          },
+        ),
       ),
     );
   }
