@@ -1,3 +1,4 @@
+import 'dart:html';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/elements/custom_elevated_button.dart';
@@ -56,6 +57,89 @@ import 'package:shared_preferences/shared_preferences.dart';
   //    return [];
   //  }
   //}
+
+
+class BookmarkedPage extends StatefulWidget {
+  @override
+  _BookmarkedPageState createState() => _BookmarkedPageState();
+}
+class _BookmarkedPageState extends State<BookmarkedPage> {
+  late SharedPreferences prefs;
+  //await prefs.setStringList('bookmarks', <String>["Self inflicted headaches", "Snail Surgery"]);
+
+  @override
+  void initState() {
+    super.initState();
+    initializeSharedPreferences();
+  }
+
+  void initializeSharedPreferences() async {
+    prefs = await SharedPreferences.getInstance();
+  }
+
+  late List<String>? bookmarks;
+
+  void getBookmarks() async {
+    prefs.setStringList('bookmarks', <String>["Self inflicted headaches", "Snail Surgery"]);
+    bookmarks = prefs.getStringList('bookmarks');
+    print(bookmarks);
+  }
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Bookmarks'),
+      ),
+      body: Column(
+        children: [
+          SizedBox(height: 45), // Add a SizedBox between AppBar and body
+          Expanded(
+            child: FutureBuilder<List<String>>(
+              future: Future.value(bookmarks),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  if (snapshot.hasError) {
+                    // If an error occurred while fetching the data
+                    return Text('Error: ${snapshot.error}');
+                  } else if (snapshot.data != null &&
+                      snapshot.data!.isNotEmpty) {
+                    // If the data was fetched successfully
+                    return ListView(
+                      children: snapshot.data!
+                          .map((name) => Column(
+                        children: [
+                          CustomElevatedButton(
+                            text: name,
+                            onPressed: () {},
+                          ),
+                          SizedBox(
+                              height:
+                              10), // Add a SizedBox after each button
+                        ],
+                      ))
+                          .toList(),
+                    );
+                  }
+                }
+                // If none of the above conditions are met, return a CircularProgressIndicator
+                return CircularProgressIndicator();
+              },
+            ),
+          ),
+        ],
+
+      )
+    );
+  }
+
+}
+
+
+/*
+
 class BookmarkedPage extends StatelessWidget {
   //TODO: Its late and I couldn't figure out a better way to do this atm
   //Could we do a first startup thing, or just detect if there is no cache or something?
@@ -131,3 +215,4 @@ class BookmarkedPage extends StatelessWidget {
     );
   }
 }
+*/
