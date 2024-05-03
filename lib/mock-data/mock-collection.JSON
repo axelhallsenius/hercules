@@ -1,0 +1,46 @@
+{
+    "medical_routines": [
+      {
+        "routine_name": "Daily Patient Assessment",
+        "purpose": "To monitor patient vital signs and overall condition",
+        "format":"PDF",
+        "length":98,
+        "steps": [
+          "Check and record patient's blood pressure",
+          "Measure and record temperature",
+          "Assess patient's pain level using a standardized pain scale",
+          "Record any patient complaints or concerns"
+        ],
+        "tools_needed": ["blood pressure cuff", "thermometer", "pain scale chart"]
+      },
+      {
+        "routine_name": "Medication Administration",
+        "purpose": "To administer daily medications to patients",
+        "format":"PDF",
+        "length":30,
+        "steps": [
+          "Verify patient identity using ID band and patient chart",
+          "Check the doctor's medication order",
+          "Prepare the correct dosage",
+          "Administer medication ensuring the right patient, drug, dose, route, and time",
+          "Document administration details in the patient's medical record"
+        ],
+        "tools_needed": ["medication chart", "pills or injectables", "medical record"]
+      },
+      {
+        "routine_name": "Wound Care Management",
+        "purpose": "To clean and dress wounds to promote healing and prevent infection",
+        "format":"txt",
+        "length":2,
+        "steps": [
+          "Wash hands and wear gloves",
+          "Gently clean the wound using sterile water or saline solution",
+          "Apply appropriate antibiotic ointment if prescribed",
+          "Cover the wound with sterile dressing",
+          "Document the procedure and observe any signs of infection"
+        ],
+        "tools_needed": ["gloves", "sterile water", "saline solution", "antibiotic ointment", "sterile dressing"]
+      }
+    ]
+  }
+  
